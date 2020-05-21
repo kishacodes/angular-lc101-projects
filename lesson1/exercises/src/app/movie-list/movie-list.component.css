@@ -1,0 +1,13 @@
+/* Adjust div properties, including h3 and li tags */
+
+.movies {
+  color: blueviolet;
+}
+h3 {
+  color: blue;
+  text-align: center;
+}
+li {
+  text-align: center;
+  font-size: larger;
+}
