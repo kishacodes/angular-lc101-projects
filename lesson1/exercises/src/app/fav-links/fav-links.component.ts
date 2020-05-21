@@ -9,7 +9,7 @@ export class FavLinksComponent implements OnInit {
   favLinks: [
     "https://www.espn.com",
     "https://www.w3schools",
-    "https://www.google.com"
+    "http://www.google.com"
   ];
 
   constructor() {}
