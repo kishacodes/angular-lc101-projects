@@ -1,8 +1,16 @@
-<div class='movies col-4'>
-    <h3>Movies to Watch</h3>
-    <ol>
-       <li *ngFor ="let movie of movies">{{movie}}</li>
-    </ol>
-    <hr>
-
- </div>
+<div class="movies col-4">
+  <h3>Movies to Watch</h3>
+  <ol>
+    <li *ngFor="let movie of movies">{{ movie }}</li>
+  </ol>
+  <hr />
+  <!-- Add function to update movies array with input submit, then clear the input box -->
+  <input
+    #newMovie
+    (keyup.enter)="addMovie(newMovie.value); newMovie.value = ''"
+    type="text"
+    placeholder="Enter Movie Title Here"
+  />
+  <!-- Add a button as a popular UI option for users. -->
+  <button (click)="addMovie(newMovie.value); newMovie.value = ''">Add</button>
+</div>
