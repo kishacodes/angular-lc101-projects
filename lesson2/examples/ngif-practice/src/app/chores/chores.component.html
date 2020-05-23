@@ -1,14 +1,61 @@
-<div class="chores">
-    <h3>Chores</h3>
-    <ul>
-        <li *ngFor = 'let chore of chores'>{{chore}}</li>
-    </ul>
+<!-- Add an ngIf/else statement if chores list is longer than done list -->
+<div
+  class="chores"
+  *ngIf="chores.length < finishedChores.length; else workHarder"
+>
+  <h3>Chores</h3>
+  <ul>
+    <li *ngFor="let chore of chores">{{ chore }}</li>
+  </ul>
 </div>
-<hr>
-<div class="doneChores">
+
+<ng-template #workHarder>
+  <div class="chores">
+    <h3>Chores</h3>
+    <p>Work Harder</p>
+  </div>
+</ng-template>
+
+<!-- Add an ngIf/else dependent on 1 of 2 conditions -->
+<hr />
+<div
+  class="doneChores"
+  *ngIf="
+    chores.length < 1 || finishedChores.length > chores.length + 2;
+    else noAllowance
+  "
+>
+  <h3>Done Chores</h3>
+  <ul>
+    <li *ngFor="let done of finishedChores">{{ done }}</li>
+  </ul>
+  <img src="{{ trophyImage }}" />
+</div>
+<hr />
+
+<ng-template #noAllowance>
+  <div class="doneChores">
     <h3>Done Chores</h3>
     <ul>
-        <li *ngFor = 'let done of finishedChores'>{{done}}</li>
+      <li *ngFor="let done of finishedChores">{{ done }}</li>
     </ul>
+    <p>No allowance yet.</p>
+  </div>
+</ng-template>
+
+<!-- Add a new class for ice cream treat if 2 conditions are met. -->
+<!-- <hr/> -->
+<div
+  class="iceCream"
+  *ngIf="chores.length < 1 && finishedChores.length >= 4; else noTreat"
+>
+  <h1>Ice cream treat!</h1>
 </div>
-<hr>
+
+<ng-template #noTreat>
+  <div class="iceCream">
+    <hr />
+    <h3>To earn an ice cream treat:</h3>
+    <p *ngFor="let treat of treats">{{ treat }}</p>
+  </div>
+</ng-template>
