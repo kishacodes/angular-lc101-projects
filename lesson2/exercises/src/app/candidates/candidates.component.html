@@ -33,20 +33,36 @@
     <div class="centered col-3">
       <h2>Sidekick</h2>
       <!-- Use *ngIf and the correct placeholder to display a sidekick's image -->
-      <img src="{{ placeholder }}" alt="OOPS! No image available." />
+      <!-- *ngIf="selected; else blankColumn" -->
+      <img
+        src="{{ selected.image }}"
+        alt="OOPS! No image available."
+        *ngIf="selected"
+      />
     </div>
+
+    <!-- <ng-template #noSidekick>
+    <div class="centered col-3">
+        <h2>Sidekick</h2>
+        <p></p>
+    </dv>
+</ng-template> -->
 
     <div class="crew col-3">
       <h2>Selected Crew</h2>
       <ul>
-        <li>Use *ngFor to list the selected crew.</li>
+        <li *ngFor="let person of crew">
+          {{ person.name }}
+        </li>
       </ul>
       <!-- Add a "Clear Crew List" button here. -->
+      <button (click)="(crew.length > 0)">Clear Crew List</button>
     </div>
   </div>
   <hr />
   <div class="centered">
-    <button #blankColumn (click)="(false)">Clear Data & Image</button>
+    <button (click)="selected = false">Clear Data & Image</button>
+    <button (click)="addToCrew(selected)">Send on Mission</button>
     <!-- Add a "Send on Mission" button here. -->
   </div>
 </div>
