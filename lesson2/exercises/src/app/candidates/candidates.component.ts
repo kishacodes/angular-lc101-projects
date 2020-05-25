@@ -37,6 +37,7 @@ export class CandidatesComponent implements OnInit {
   ];
 
   crew = [];
+  g;
 
   // selection(newName: string) {
 
